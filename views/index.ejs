@@ -1,0 +1,49 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/homenavbar.ejs') %>
+<div class="container">
+    <hr>
+    <div style="text-align: center;">
+       <h2>Agenda</h2>
+       <hr>
+       <h3>Seus contatos estão registrados na tabela abaixo</h3>
+       <br>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <%contatos.forEach(contato=>{%>
+                <tr>
+                <td><%=contato.nome%></td>
+                <td><%=contato.email%></td>
+                <td><%=contato.telefone%></td>
+                <td>
+                    <a class="btn btn-warning" href="/admin/contact/edit/<%=contato.id%>">Editar</a>
+                    <form method="POST" action="/contacts/delete" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
+                    <input type="hidden" value="<%=contato.id%>" name="id">
+                    <button class="btn btn-danger">Deletar Contato</button>
+                    </form>
+                </td> 
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+</div>
+<script>
+    function confirmarDelecao(event,form){
+        event.preventDefault()
+        let decision = confirm("Você tem certeza que deseja apagar este contato?")
+        if(decision){
+            form.submit();
+        }
+    }
+</script>
+<%- include('./partials/footer.ejs') %>

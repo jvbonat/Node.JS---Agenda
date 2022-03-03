@@ -1,0 +1,25 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/homenavbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-title">
+            <h2 style="text-align: center;">Edição de usuários do sistema</h2>
+        </div>
+
+        <div class="card-body">
+            <form method="POST" action="/users/update">
+                <label>E-mail:</label>
+                <br>
+                <input class="form-control" type="email" name="email" value="<%=user.email%>">
+                <br>
+                <label>Senha:</label>
+                <input type="password" class="form-control" name="password">
+                <br>
+                <input type="hidden" name="id" value="<%=user.id%>">
+                <button class="btn btn-dark btn-block">Editar conta</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../../partials/footer.ejs') %>

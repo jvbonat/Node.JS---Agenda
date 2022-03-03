@@ -1,0 +1,29 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/homenavbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2 style="text-align: center;">Criação de contatos da Agenda</h2>
+            </div>
+
+            <div class="card-body">
+                <form method="POST" action="/admin/contacts/create">
+                    <label>Nome:</label>
+                    <input type="text" class="form-control" name="nome">
+                    <br>
+                    <label>Telefone:</label>
+                    <input type="text" class="form-control" name="telefone">
+                    <br>
+                    <label>Email:</label>
+                    <input type="email" class="form-control" name="email">
+                    <br>
+                    <button class="btn btn-dark btn-block">Cadastrar contato</button>
+                </form>
+            </div>
+
+        </div>
+    </div> 
+</body>
+<%- include('../../partials/footer.ejs') %>
